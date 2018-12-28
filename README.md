@@ -1,6 +1,12 @@
-# git-rev
+# get-git-data
 
-access git revision state in node
+[![npm version](https://img.shields.io/npm/v/rsk.svg?style=flat)](https://www.npmjs.com/package/get-git)
+
+Access git revision state in node. 
+
+Original source code from [https://github.com/tblobaum/git-rev](https://github.com/tblobaum/git-rev).
+
+Bug patch by [Kacper Kula](https://github.com/kulak-at)
 
 # Example
 
