@@ -1,9 +1,8 @@
 {
   "name": "get-git-data",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "get the current git commit hash, tag or branch in node",
   "main": "index.js",
-  "bin": {},
   "directories": {
     "example": "example"
   },
@@ -15,10 +14,5 @@
     "url": "git@github.com:chardos/get-git-data.git"
   },
   "keywords": ["git", "history"],
-  "author": {
-    "name": "Thomas Blobaum",
-    "email": "tblobaum@gmail.com",
-    "url": "https://github.com/tblobaum/"
-  },
   "license": "MIT"
 }

@@ -1,6 +1,6 @@
 # get-git-data
 
-[![npm version](https://img.shields.io/npm/v/rsk.svg?style=flat)](https://www.npmjs.com/package/get-git)
+[![npm version](https://img.shields.io/npm/v/get-git-data.svg?style=flat)](https://www.npmjs.com/package/get-git-data)
 
 Access git revision state in node. 
 
