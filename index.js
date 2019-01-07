@@ -21,7 +21,7 @@ module.exports = {
     }
   , log : function (cb) {
       var separator = '<SEPARATOR>';
-      var cmd = 'git log --no-color --pretty=format:\'[ "%H", "%s", "%at000", "%an" ],\' --abbrev-commit';
+      var cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
       cmd = cmd.replace(/"/g, separator);
       _command(cmd, function (str) {
         str = str.substr(0, str.length-1);
