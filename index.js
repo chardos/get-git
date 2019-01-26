@@ -9,33 +9,32 @@ function _command (cmd, cb) {
 }
 
 module.exports = {
-    short : function (cb) {
-      _command('git rev-parse --short HEAD', cb)
-    }, 
-    
-    long : function (cb) {
-      _command('git rev-parse HEAD', cb)
-    }, 
-    
-    branch : function (cb) {
-      _command('git rev-parse --abbrev-ref HEAD', cb)
-    }, 
-    
-    tag : function (cb) {
-      _command('git describe --always --tag --abbrev=0', cb)
-    }, 
-    log : function (cb) {
-      var SEPARATOR = '<SEPARATOR>';
-      var cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
-      cmd = cmd.replace(/"/g, SEPARATOR);
-      _command(cmd, function (str) {
-        const json = parseStdOut(str, SEPARATOR);
-        cb(json)
-      })
-    },
-    log2: () => {
-      const SEPARATOR = '<SEPARATOR>';
-      const cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
-    }
-    
+  log : function (cb) {
+    var SEPARATOR = '<SEPARATOR>';
+    var cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
+    cmd = cmd.replace(/"/g, SEPARATOR);
+    _command(cmd, function (str) {
+      const json = parseStdOut(str, SEPARATOR);
+      cb(json)
+    })
+  },
+  log2: () => {
+    const SEPARATOR = '<SEPARATOR>';
+    const cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
+  },
+  short : function (cb) {
+    _command('git rev-parse --short HEAD', cb)
+  }, 
+  
+  long : function (cb) {
+    _command('git rev-parse HEAD', cb)
+  }, 
+  
+  branch : function (cb) {
+    _command('git rev-parse --abbrev-ref HEAD', cb)
+  }, 
+  
+  tag : function (cb) {
+    _command('git describe --always --tag --abbrev=0', cb)
+  }, 
 }

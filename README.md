@@ -4,10 +4,6 @@
 
 Access git revision state in node. 
 
-Original source code from [https://github.com/tblobaum/git-rev](https://github.com/tblobaum/git-rev).
-
-Bug patch by [Kacper Kula](https://github.com/kulak-at)
-
 # Example
 
 ``` js
@@ -38,7 +34,7 @@ git.tag(function (str) {
 # Methods
 
 ``` js 
-var git = require('git-rev')
+var git = require('get-git-data')
 ```
 
 ## .log(function (array) { ... })
@@ -76,7 +72,13 @@ return the current branch
 
 # Install
 
-`npm install git-rev`
+`npm install get-git-data`
+
+## Credits
+
+Original source code from [https://github.com/tblobaum/git-rev](https://github.com/tblobaum/git-rev).
+
+Bug patch by [Kacper Kula](https://github.com/kulak-at)
 
 # License
 
