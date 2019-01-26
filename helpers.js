@@ -1,9 +1,9 @@
+const { SEPARATOR } = require('./constants');
 
-
-exports.parseStdOut = (stdOut, separator) => {
-  stdOut = stdOut.substr(0, stdOut.length-1);
+exports.parseStdOut = (stdOut, SEPARATOR) => {
+  stdOut = trimLastChar(stdOut)
   stdOut = stdOut.replace(/"/g, '\\"');
-  stdOut = stdOut.replace(new RegExp(separator,'g'), '"');
+  stdOut = stdOut.replace(new RegExp(SEPARATOR,'g'), '"');
   return JSON.parse('[' + stdOut + ']');
 }
 

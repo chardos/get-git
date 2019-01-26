@@ -1,5 +1,6 @@
 var exec = require('child_process').exec
 const { parseStdOut } = require('./helpers');
+const { SEPARATOR } = require('./constants');
 
 function _command (cmd, cb) {
   exec(cmd, function (err, stdout, stderr) {
@@ -24,11 +25,11 @@ module.exports = {
       _command('git describe --always --tag --abbrev=0', cb)
     }, 
     log : function (cb) {
-      var separator = '<SEPARATOR>';
+      var SEPARATOR = '<SEPARATOR>';
       var cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
-      cmd = cmd.replace(/"/g, separator);
+      cmd = cmd.replace(/"/g, SEPARATOR);
       _command(cmd, function (str) {
-        const json = parseStdOut(str, separator);
+        const json = parseStdOut(str, SEPARATOR);
         cb(json)
       })
     },
