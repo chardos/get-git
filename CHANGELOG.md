@@ -1,6 +1,5 @@
 ## 1.1.0
 
-- Give options for long and short hash.
 - API now uses promises instead of callbacks
 
 ## 1.0.3

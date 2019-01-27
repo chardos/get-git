@@ -1,6 +1,6 @@
 const exec = require('child_process').exec
 const { parseStdout } = require('./helpers');
-const { SEPARATOR } = require('./constants');
+const { SEPARATOR, OPTION_MAP } = require('./constants');
 
 function _command (cmd) {
   return new Promise((resolve, reject) => {
@@ -13,8 +13,13 @@ function _command (cmd) {
 }
 
 module.exports = {
-  log: function () {
-    let cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
+  log: function (...options) {
+    let cmd = `git log --no-color --pretty=format:'{ 
+      "commitHash": "%h", 
+      "commitMessage": "%s", 
+      "timestamp": "%at000", 
+      "authorName": "%an" 
+    },' --abbrev-commit`;
     cmd = cmd.replace(/"/g, SEPARATOR);
 
     return new Promise(resolve => {

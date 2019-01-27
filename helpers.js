@@ -1,13 +1,24 @@
 const { SEPARATOR } = require('./constants');
+const pipe = require('ramda.pipe');
 
 exports.parseStdout = (stdout) => {
-  stdout = stdout.split('\n').join('')
-  stdout = trimLastChar(stdout)
-  stdout = stdout.replace(/"/g, '\\"');
-  stdout = stdout.replace(new RegExp(SEPARATOR,'g'), '"');
-  return JSON.parse('[' + stdout + ']');
+  const parsed = (pipe(
+    trimLastChar,
+    wrapInArray,
+    replaceSeparators
+  )(stdout))
+
+  return JSON.parse(parsed);
 }
 
 function trimLastChar(str) {
   return str.substr(0, str.length-1);
+}
+
+function wrapInArray(str){
+  return `[${str}]`
+}
+
+function replaceSeparators(str) {
+  return str.replace(new RegExp(SEPARATOR,'g'), '"');
 }

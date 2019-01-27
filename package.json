@@ -6,7 +6,9 @@
   "directories": {
     "example": "example"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ramda.pipe": "^0.25.0"
+  },
   "devDependencies": {},
   "scripts": {},
   "repository": {
