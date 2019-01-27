@@ -1,10 +1,11 @@
 const { SEPARATOR } = require('./constants');
 
-exports.parseStdOut = (stdOut, SEPARATOR) => {
-  stdOut = trimLastChar(stdOut)
-  stdOut = stdOut.replace(/"/g, '\\"');
-  stdOut = stdOut.replace(new RegExp(SEPARATOR,'g'), '"');
-  return JSON.parse('[' + stdOut + ']');
+exports.parseStdOut = (stdout) => {
+  stdout = stdout.split('\n').join('')
+  stdout = trimLastChar(stdout)
+  stdout = stdout.replace(/"/g, '\\"');
+  stdout = stdout.replace(new RegExp(SEPARATOR,'g'), '"');
+  return JSON.parse('[' + stdout + ']');
 }
 
 function trimLastChar(str) {
