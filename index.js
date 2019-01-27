@@ -25,19 +25,11 @@ module.exports = {
     })
   },
 
-  short: function (cb) {
-    _command('git rev-parse --short HEAD', cb)
-  }, 
+  short: () => _command('git rev-parse --short HEAD'),
   
-  long: function (cb) {
-    _command('git rev-parse HEAD', cb)
-  }, 
+  long: () => _command('git rev-parse HEAD'),
   
-  branch: function (cb) {
-    _command('git rev-parse --abbrev-ref HEAD', cb)
-  }, 
+  branch: () => _command('git rev-parse --abbrev-ref HEAD'),
   
-  tag: function (cb) {
-    _command('git describe --always --tag --abbrev=0', cb)
-  }, 
+  tag: () => _command('git describe --always --tag --abbrev=0'),
 }
