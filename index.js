@@ -13,25 +13,27 @@ module.exports = {
     var cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
     cmd = cmd.replace(/"/g, SEPARATOR);
 
-    _command(cmd, function (str) {
-      const json = parseStdOut(str);
-      cb(json)
+    return new Promise(resolve => {
+      _command(cmd, function (str) {
+        const json = parseStdOut(str);
+        resolve(json)
+      })
     })
   },
 
-  short : function (cb) {
+  short: function (cb) {
     _command('git rev-parse --short HEAD', cb)
   }, 
   
-  long : function (cb) {
+  long: function (cb) {
     _command('git rev-parse HEAD', cb)
   }, 
   
-  branch : function (cb) {
+  branch: function (cb) {
     _command('git rev-parse --abbrev-ref HEAD', cb)
   }, 
   
-  tag : function (cb) {
+  tag: function (cb) {
     _command('git describe --always --tag --abbrev=0', cb)
   }, 
 }
