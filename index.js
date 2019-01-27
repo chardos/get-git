@@ -1,21 +1,25 @@
-var exec = require('child_process').exec
-const { parseStdOut } = require('./helpers');
+const exec = require('child_process').exec
+const { parseStdout } = require('./helpers');
 const { SEPARATOR } = require('./constants');
 
-function _command (cmd, cb) {
-  exec(cmd, function (err, stdout, stderr) {
-    cb(stdout)
+function _command (cmd) {
+  return new Promise((resolve, reject) => {
+    exec(cmd, function (err, stdout, stderr) {
+      if (err) return reject(err);
+      if (stderr) return reject(stderr);
+      resolve(stdout)
+    })
   })
 }
 
 module.exports = {
-  log : function (cb) {
-    var cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
+  log: function () {
+    let cmd = 'git log --no-color --pretty=format:\'[ "%h", "%s", "%at000", "%an" ],\' --abbrev-commit';
     cmd = cmd.replace(/"/g, SEPARATOR);
 
     return new Promise(resolve => {
-      _command(cmd, function (str) {
-        const json = parseStdOut(str);
+      _command(cmd).then(stdout => {
+        const json = parseStdout(stdout);
         resolve(json)
       })
     })

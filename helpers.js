@@ -1,6 +1,6 @@
 const { SEPARATOR } = require('./constants');
 
-exports.parseStdOut = (stdout) => {
+exports.parseStdout = (stdout) => {
   stdout = stdout.split('\n').join('')
   stdout = trimLastChar(stdout)
   stdout = stdout.replace(/"/g, '\\"');
