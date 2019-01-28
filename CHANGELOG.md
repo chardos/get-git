@@ -1,3 +1,7 @@
+## 1.2.0
+
+- git.log() now returning object instead of array
+
 ## 1.1.0
 
 - API now uses promises instead of callbacks
