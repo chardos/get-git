@@ -3,11 +3,8 @@
   "version": "1.2.0",
   "description": "get the current git commit hash, tag or branch in node",
   "main": "index.js",
-  "directories": {
-    "example": "example"
-  },
   "dependencies": {
-    "ramda.pipe": "^0.25.0"
+    "ramda.pipe": "0.25.0"
   },
   "devDependencies": {},
   "scripts": {},
