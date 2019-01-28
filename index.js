@@ -15,7 +15,7 @@ function _command (cmd) {
 module.exports = {
   log: function (...options) {
     let cmd = `git log --no-color --pretty=format:'{
-      "commitHash": "%h",
+      "commitHash": "%H",
       "commitMessage": "%s",
       "timestamp": "%at000",
       "authorName": "%an"

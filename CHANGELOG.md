@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Back to using long commit hash. Consuming apps can shorten to 7 characters if need be.
+
 ## 1.2.0
 
 - git.log() now returning object instead of array

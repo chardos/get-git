@@ -1,6 +1,6 @@
 {
   "name": "get-git-data",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "get the current git commit hash, tag or branch in node",
   "main": "index.js",
   "dependencies": {
