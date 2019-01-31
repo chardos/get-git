@@ -4,7 +4,7 @@ const { SEPARATOR } = require('./constants');
 
 function _command (cmd) {
   return new Promise((resolve, reject) => {
-    exec(cmd, function (err, stdout, stderr) {
+    exec(cmd, {maxBuffer: 1024 * 1000}, function (err, stdout, stderr) {
       if (err) return reject(err);
       if (stderr) return reject(stderr);
       resolve(stdout)
@@ -13,13 +13,18 @@ function _command (cmd) {
 }
 
 module.exports = {
-  log: function (...options) {
+  log: function (limit) {
     let cmd = `git log --no-color --pretty=format:'{
       "commitHash": "%H",
       "commitMessage": "%s",
       "timestamp": "%at000",
       "authorName": "%an"
     },' --abbrev-commit`;
+    
+    if (limit) {
+      cmd = `${cmd} -${limit}`;
+    }
+
     cmd = cmd.replace(/"/g, SEPARATOR);
 
     return new Promise(resolve => {

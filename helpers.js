@@ -7,7 +7,6 @@ exports.parseStdout = (stdout) => {
     wrapInArray,
     replaceSeparators
   )(stdout))
-
   return JSON.parse(parsed);
 }
 
