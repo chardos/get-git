@@ -19,5 +19,6 @@ function wrapInArray(str){
 }
 
 function replaceSeparators(str) {
-  return str.replace(new RegExp(SEPARATOR,'g'), '"');
+  const newStr = str.replace(/"/g, '\\"');
+  return newStr.replace(new RegExp(SEPARATOR,'g'), '"');
 }
